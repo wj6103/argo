@@ -1,0 +1,20 @@
+server:
+  port: 0
+spring:
+  application:
+    name: auth-server
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        service-id: config-server
+      profile: ${ARGO_ENV}
+      label: ${ARGO_BRANCH}
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER}
+  instance:
+    prefer-ip-address: true

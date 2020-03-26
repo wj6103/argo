@@ -1,0 +1,22 @@
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-server
+  # Sleuth & Zipkin & Kafka
+  kafka:
+    bootstrap-servers: ai-dev-01.silkrode.com.tw:9092,ai-dev-02.silkrode.com.tw:9092,ai-dev-03.silkrode.com.tw:9092
+    producer:
+      retries: 3
+    consumer:
+      group-id: ${random.uuid}
+  zipkin:
+    sender:
+      type: kafka
+  sleuth:
+    sampler:
+      probability: 1.0
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_SERVER}
